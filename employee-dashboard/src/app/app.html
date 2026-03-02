@@ -1,0 +1,34 @@
+<h2>Employee Management System</h2>
+
+<app-employee-form></app-employee-form>
+<hr>
+
+<app-employee-list></app-employee-list>
+
+<hr>
+
+<input
+  type="text"
+  placeholder="Search by employee name"
+  [(ngModel)]="searchText"
+/>
+
+<br /><br />
+
+<table border="1" cellpadding="8">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Department</th>
+    <th>Date Of Joining</th>
+  </tr>
+
+  <tr *ngFor="let emp of employeeService.employees() | employeeSearch: searchText">
+    <td>{{ emp.id }}</td>
+    <td>{{ emp.firstName }} {{ emp.lastName }}</td>
+    <td>{{ emp.email }}</td>
+    <td>{{ emp.department }}</td>
+    <td>{{ emp.dateOfJoining | joiningDate }}</td>
+  </tr>
+</table>
